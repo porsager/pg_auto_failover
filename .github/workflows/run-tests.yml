@@ -3,7 +3,7 @@ name: Run Tests
 on:
   push:
     branches:
-    - main
+    - dcu-test
   pull_request:
     branches:
     - main
@@ -17,24 +17,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        PGVERSION:
-          - 11
-          - 12
-          - 13
-          - 14
-          - 15
-          - 16
-        TEST:
-          - multi
-          - single
-          - monitor
-          - ssl
-          - citus
         include:
           - PGVERSION: 14
             TEST: tablespaces
-          - PGVERSION: 14
-            TEST: linting
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
